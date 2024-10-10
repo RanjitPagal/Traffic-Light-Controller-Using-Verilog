@@ -1,0 +1,44 @@
+`timescale 1ns / 1ps
+
+module ProjectTLC_tb();
+   reg clk, rst;
+   wire [2:0] light_M1;
+   wire [2:0] light_M2;
+   wire [2:0] light_M3;
+   wire [2:0] light_M4;
+   wire [2:0] light_R;
+   wire [2:0] light_S;
+   wire [3:0] count;
+   wire [3:0] ps;
+   
+   ProjectTLC dut (
+       .clk(clk), 
+       .rst(rst), 
+       .light_M1(light_M1), 
+       .light_M2(light_M2), 
+       .light_M3(light_M3),
+       .light_M4(light_M4), 
+       .light_R(light_R), 
+       .light_S(light_S),
+       .count(count),
+       .ps(ps)
+   );
+
+   initial 
+     begin
+       clk = 1'b0;
+       forever #5 clk = ~clk; 
+     end
+
+   initial 
+     begin
+        rst=0;
+        #10;
+        rst=1;
+        #5;
+        rst=0;
+        #10000;
+        $finish;
+      end
+      
+endmodule
