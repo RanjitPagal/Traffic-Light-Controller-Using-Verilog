@@ -11,7 +11,7 @@ module ProjectTLC(
 );
     
     parameter S1=0, S2=1, S3=2, S4=3, S5=4, S6=5, S7=6, S8=7, S9=8, S10=9;
-    parameter sec10=10, sec7=7, sec5=5, sec3=3;
+    parameter Tmg=10, Ttg=7, Tsg=5, Ty=3;
     
     always @(posedge clk or posedge rst) begin
         if (rst) begin
@@ -19,34 +19,34 @@ module ProjectTLC(
             count <= 0;
         end else begin
             case (ps)
-                S1: if (count < sec10) count <= count + 1; 
+                S1: if (count < Tmg) count <= count + 1; 
                     else begin ps <= S2; 
                                count <= 0; end
-                S2: if (count < sec3) count <= count + 1; 
+                S2: if (count < Ty) count <= count + 1; 
                     else begin ps <= S3; 
                                count <= 0; end
-                S3: if (count < sec7) count <= count + 1; 
+                S3: if (count < Ttg) count <= count + 1; 
                     else begin ps <= S4; 
                                count <= 0; end
-                S4: if (count < sec3) count <= count + 1; 
+                S4: if (count < Ty) count <= count + 1; 
                     else begin ps <= S5; 
                                count <= 0; end
-                S5: if (count < sec7) count <= count + 1; 
+                S5: if (count < Ttg) count <= count + 1; 
                     else begin ps <= S6; 
                                count <= 0; end
-                S6: if (count < sec3) count <= count + 1; 
+                S6: if (count < Ty) count <= count + 1; 
                     else begin ps <= S7; 
                                count <= 0; end
-                S7: if (count < sec5) count <= count + 1; 
+                S7: if (count < Tsg) count <= count + 1; 
                     else begin ps <= S8; 
                                count <= 0; end
-                S8: if (count < sec3) count <= count + 1; 
+                S8: if (count < Ty) count <= count + 1; 
                     else begin ps <= S9; 
                                count <= 0; end
-                S9: if (count < sec5) count <= count + 1; 
+                S9: if (count < Tsg) count <= count + 1; 
                     else begin ps <= S10; 
                                count <= 0; end
-                S10: if (count < sec3) count <= count + 1; 
+                S10: if (count < Ty) count <= count + 1; 
                     else begin ps <= S1; 
                                count <= 0; end
                 default: begin ps <= S1;count <= 0; end
@@ -57,15 +57,15 @@ module ProjectTLC(
     always @(ps) begin
         case (ps)
             S1: begin 
-                 light_M1 = 2'b10; // 10:Green
+                 light_M1 = 2'b10; 
                  light_M2 = 2'b10; 
-                 light_M3 = 2'b00; // 00:Red
+                 light_M3 = 2'b00; 
                  light_M4 = 2'b00; 
                  light_R = 2'b00; 
                  light_S = 2'b00; end
             S2: begin 
                  light_M1 = 2'b10; 
-                 light_M2 = 2'b01; // 01:Yellow
+                 light_M2 = 2'b01; 
                  light_M3 = 2'b00; 
                  light_M4 = 2'b00; 
                  light_R = 2'b00; 
