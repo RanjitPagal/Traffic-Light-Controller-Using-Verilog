@@ -57,15 +57,15 @@ module ProjectTLC(
     always @(ps) begin
         case (ps)
             S1: begin 
-                 light_M1 = 2'b10; // 10:Green,01:Yellow,00:Red
+                 light_M1 = 2'b10; // 10:Green
                  light_M2 = 2'b10; 
-                 light_M3 = 2'b00; 
+                 light_M3 = 2'b00; // 00:Red
                  light_M4 = 2'b00; 
                  light_R = 2'b00; 
                  light_S = 2'b00; end
             S2: begin 
                  light_M1 = 2'b10; 
-                 light_M2 = 2'b01; 
+                 light_M2 = 2'b01; // 01:Yellow
                  light_M3 = 2'b00; 
                  light_M4 = 2'b00; 
                  light_R = 2'b00; 
